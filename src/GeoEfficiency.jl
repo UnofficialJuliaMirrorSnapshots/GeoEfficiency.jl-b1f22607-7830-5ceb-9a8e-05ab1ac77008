@@ -59,7 +59,7 @@ include("Output_Interface.jl")
 
 #------------------------ about ---------------------------
 
-using Compat, Compat.Dates
+using Dates
 
 const abt ="""
 \n
@@ -72,11 +72,11 @@ const abt ="""
 \t Author:        Mohamed E. Krar,  @e-mail: DrKrar@gmail.com 
 \t Auth_Profile:  https://www.researchgate.net/profile/Mohamed_Krar3
 \t Repository:    https://github.com/DrKrar/GeoEfficiency.jl/
-\t Version:       v"0.9.3-DEV" - ($(Date(now()) - Date("2019-04-5")) old master)  
-\t Documentation: GeoEfficiency.GitHub.io/index.html
-\t PDF_Manual:    GeoEfficiency.GitHub.io/pdf/GeoEfficiency.pdf
+\t Version:       v"0.9.4-dev" - ($(Date(now()) - Date("2019-04-14")) old master)  
+\t Documentation: https://GeoEfficiency.GitHub.io/dev/index.html
+\t PDF_Manual:    https://GeoEfficiency.GitHub.io/dev/pdf/GeoEfficiency.jl.pdf
 \n
-\n\tBatch mode 
+\n\tBatch Mode Calculations 
 \t-  read files by defaul from directory `$(join(split(dataDir,"/travis")))`
 \t-  save results by default to directory `$(join(split(resultdir,"/travis")))`
 \n\tfor more information see `batch`, `batchInfo`.

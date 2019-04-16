@@ -6,8 +6,6 @@
 # 
 #**************************************************************************************
 
-using Compat
-using Compat: occursin, @error
 
 
 @testset "GeoEfficiecny.checkResultsDirs" begin 
@@ -34,6 +32,9 @@ let pnt::Point = Point(1),
 
 		@test calc(cylDet,  (pnt, SrcRadius , SrcLength))    == nothing
 		@test calc(wellDet, (pnt, SrcRadius , SrcLength))    == nothing
+	
+		@test_throws 	G.NotImplementedError  	H.@console(calc(cylDet), 0, 15, 0)
+		@test_throws 	G.InValidGeometry  		H.@console(calc(cylDet), -1, 0, 0)
 	end #testset_calc
 end #let
 
@@ -80,7 +81,7 @@ end #testset_GeoEfficiecny._batch
 
 local paths::Vector{String} = String[]
 local every_path::Vector{String} = String[]
-max_batch(-1)		# display the batch caluation results on the console
+max_batch(-1)		# display the batch calculation results on the console
 
 	@testset "batch(<:Detector)" begin
 		acylDetector1::CylDetector = CylDetector(eps(0.1))
@@ -96,7 +97,7 @@ max_batch(-1)		# display the batch caluation results on the console
 		push!(every_path, path)
 	end #testset_batch(<:Detector)
 
-max_batch(Inf)		# prevent the display of batch caluation results on the console
+max_batch(Inf)		# prevent the display of batch calculation results on the console
 	let acylDetector2::CylDetector = CylDetector(eps(0.2))
 	
 		paths = batch([acylDetector2], [0.0]) # in fact `paths` is a one element vector

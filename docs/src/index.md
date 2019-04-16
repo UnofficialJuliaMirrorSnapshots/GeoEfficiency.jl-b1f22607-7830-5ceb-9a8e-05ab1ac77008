@@ -7,11 +7,11 @@ The Package relay directly on numerical evaluation of closed form analytical for
 Author | [Mohamed E. Krar](https://www.researchgate.net/profile/Mohamed_Krar3) (DrKrar@gmail.com)
 :----|:----: 
 Repository | [GitHub.com](https://github.com/DrKrar/GeoEfficiency.jl/)
-Documentation |  [GitHub.io](GeoEfficiency.GitHub.io/index.html)
-Current version | [v"0.9.3-dev"](https://github.com/DrKrar/GeoEfficiency.jl)
+Documentation |  [GitHub.io](https://GeoEfficiency.GitHub.io/dev/index.html)
+Current version | [v"0.9.4-dev"](https://github.com/DrKrar/GeoEfficiency.jl)
 First Created | Fri Aug 14 20:12:01 2015
 
-This documentation is also available in [pfd](GeoEfficiency.GitHub.io/pdf/GeoEfficiency.pdf) format.
+This documentation is also available in [pfd](https://GeoEfficiency.GitHub.io/dev/pdf/GeoEfficiency.jl.pdf) format.
 
 ## Current and Planed Features
 The following list show the state of current feature and planed feature.
@@ -40,15 +40,14 @@ the checked items represent already present feature.
  - [ ] combine the effect of the source geometry and composition. 
 
 ## Requirements
- *  Julia 0.6 or above.
- *  QuadGK 0.3.0 or above, will be installed automatically during the package Installation.
- *  Compat 0.63.0 or above, will be installed automatically during the package Installation.
+ *  Julia 1.1 or above.
+ *  QuadGK 2.0.2 or above, will be installed automatically during the package Installation.
  
 ## Download and Installation
 the package is registered officially and so it can be installed through the Julia package management  system by typing the following into the REPL prompt.
 
 ```julia
-julia> using Pkg
+julia> import Pkg
 julia> Pkg.add("GeoEfficiency") 
 ```
 
@@ -139,5 +138,5 @@ Those Comma Saved Values [CSV] files are:-
     For Comma Saved Values [CSV] files each line represent an entry, the first line is always treated as the header.
       
 !!! warning
-    The program expect each line to contain one number for all CSV files except for ``Detectors.csv`` each line should contain at least one number or at most four separated numbers
+    The program expect each line to contain one number for all CSV files except for `Detectors.csv` each line should contain at least one number or at most four separated numbers
 

@@ -6,6 +6,7 @@
 # 
 #**************************************************************************************
 
+using .MathConstants
 
 @debug("GeoEfficiency.input")
 @testset "GeoEfficiency.input" begin
@@ -45,9 +46,9 @@ end #testset_input
 	@debug("getfloat - mathematical expressions")
 	@test   0.5           		==  G.getfloat("\ninput 1/2, then press return: ",value="1/2")
 	@test   0.75          		==  G.getfloat("\ninput 3//4, then press return: ",value="3//4")
-	@test   MathConstants.pi/2 	≈   G.getfloat("\ninput 'pi/2', then press return: ",value="pi/2")
-	@test   MathConstants.e     ≈   G.getfloat("\ninput 'e', then press return: ",value="e")
-	@test   MathConstants.e^3   ≈   G.getfloat("\ninput 'e^3', then press return: ",value="e^3")
+	@test   pi/2 		        ≈   G.getfloat("\ninput 'pi/2', then press return: ",value="pi/2")
+	@test   e                   ≈   G.getfloat("\ninput 'e', then press return: ",value="e")
+	@test   e^3                 ≈   G.getfloat("\ninput 'e^3', then press return: ",value="e^3")
 	@test   Base.sin(0.1) 		≈   G.getfloat("\ninput 'sin(0.1)', then press return: ",value="sin(0.1)")
 	@test   Base.sin(0.1) + e^3 ≈   G.getfloat("\ninput 'sin(0.1)', then press return: ",value="sin(0.1)+e^3")
 
@@ -70,7 +71,7 @@ end #testset_input
 
 
 	@debug("getfloat - interval boundaries")
-	# '1', '5' are to represnt the lower, upper limits; while '3' reprents an intermediate value.
+	# '1', '5' are to represent the lower, upper limits; while '3' represents an intermediate value.
 
 	@test 1.0 == G.getfloat("\ninput '1', then press Return: ", 1.0, 5.0, value="1")					# by default lower limit is valide
 	@test 1.0 == G.getfloat("\ninput '1', then press Return: ", 1.0, 5.0, value="1", lower=true)		# now explicit lower

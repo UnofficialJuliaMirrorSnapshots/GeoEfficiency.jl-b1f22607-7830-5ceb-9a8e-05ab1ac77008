@@ -8,8 +8,7 @@
 
 #------------------ consts - globals - imports ----------------------------
 
-using Compat, Compat.MathConstants, Compat.DelimitedFiles
-using Compat: @info, @warn, @error, @__MODULE__
+using .MathConstants, DelimitedFiles
 
 isconst(@__MODULE__, :dataFolder ) 	||	const dataFolder = string(@__MODULE__)
 isconst(@__MODULE__, :dataDir )		||	const dataDir    = joinpath(homedir(), dataFolder) 	
@@ -165,7 +164,7 @@ function read_from_csvFile(csv_data::AbstractString, datadir::AbstractString = d
 		    @error("Some thing went wrong, may be `$(csv_data)` can't be found in `$(datadir)`")
 		
 		else
-		    @error("Some thing went wrong, may be `$(csv_data)` in `$(datadir)` formate is bad or empty")
+		    @error("Some thing went wrong, may be `$(csv_data)` in `$(datadir)` format is bad or empty")
 		
 		end		
 		return Float64[0.0]
@@ -332,7 +331,7 @@ function getDetectors(detector_info_array::Matrix{<:Real},
 
 	if isempty(detector_info_array) 
 		if console_FB
-			@info("The new detectors information may entred via the console")
+			@info("The new detectors information may entered via the console")
 			return getDetectors(detectors_array)
 		else
 		 	error("getDetectors: Empty `detector_info_array`")

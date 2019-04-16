@@ -1,6 +1,4 @@
 module Helper
-using Compat
-using Compat: stdin, @warn #, split
 
 """# UnExported
 
@@ -11,7 +9,7 @@ execute the expresion `expresion` after putting `console_inputs` into the standa
 for functions that meant to run iteractivelly while require user intput, this macro provid a tool to 
 allow for noninteractive testing such functions by providing the input in advance by `console_inputs`.
 """
-macro console(expresion, console_inputs...)
+macro console(expression, console_inputs...)
 	quote
 		bffr = readavailable(stdin.buffer) # empty input stream to ensure later only the `console_inputs` is in `stdin` buffer.
 		bffr == UInt8[] || @warn "buffer not empty, see the pervious process to 'stdin'"  buffer = String(bffr)
@@ -28,7 +26,7 @@ macro console(expresion, console_inputs...)
 				end #if
 			end # for
 		end #IF
-		$expresion		#:($(esc(expresion)))
+		$expression		#:($(esc(expression)))
 	end |> esc
 end
 
