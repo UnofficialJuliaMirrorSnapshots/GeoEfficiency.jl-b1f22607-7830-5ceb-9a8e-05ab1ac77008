@@ -8,8 +8,11 @@ julia:
   - nightly
 notifications:
 
-services:
-  - docker
+#codecov: true
+#coveralls: true
+after_success:
+  - julia --project=coverage/ -e 'using Pkg; Pkg.instantiate()'
+  - julia --project=coverage/ coverage/coverage.jl
 
 jobs:
   include:
@@ -17,15 +20,21 @@ jobs:
       julia: 1.1
       os: linux
       script:
-        - julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd()));
-                                               Pkg.instantiate()'
-        - julia --project=docs/ --color=yes docs/make.jl pdf clean
+        - julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
+        - julia --project=docs/ --color=yes docs/mkdocs.jl 
+      name: "Markdown/MkDocs"
+      #before_install:	pip install --upgrade pip #install: pip install --upgrade pip
       after_success: skip
 
-after_success:
-    - julia -e 'import Pkg; 
-                cd(Pkg.dir("GeoEfficiency")); 
-                Pkg.add("Coverage"); using Coverage; 
-                const fileCoverage = process_folder(); 
-                Coveralls.submit(fileCoverage);
-                Codecov.submit(fileCoverage);'
+    - script:
+      - julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
+      - julia --project=docs/ --color=yes docs/make.jl 
+      name: "HTML"
+      after_success: skip
+
+    - script:
+        - julia --project=docs/pdf/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
+        - julia --project=docs/pdf/ --color=yes docs/pdf/make.jl
+      name: "PDF"
+      after_success: skip
+      services: docker

@@ -11,9 +11,10 @@ Documentation |  [GitHub.io](https://GeoEfficiency.GitHub.io/dev/index.html)
 Current version | [v"0.9.4-dev"](https://github.com/DrKrar/GeoEfficiency.jl)
 First Created | Fri Aug 14 20:12:01 2015
 
-This documentation is also available in [pfd](https://GeoEfficiency.GitHub.io/dev/pdf/GeoEfficiency.jl.pdf) format.
+!!! note
+    This documentation is also available in [PDF](https://GeoEfficiency.GitHub.io/dev/GeoEfficiency.jl.pdf) format.
 
-## Current and Planed Features
+## Current/Planed Features
 The following list show the state of current feature and planed feature.
 the checked items represent already present feature.
 
@@ -43,8 +44,18 @@ the checked items represent already present feature.
  *  Julia 1.1 or above.
  *  QuadGK 2.0.2 or above, will be installed automatically during the package Installation.
  
-## Download and Installation
-the package is registered officially and so it can be installed through the Julia package management  system by typing the following into the REPL prompt.
+## Download/Installation
+Getting the GeoEfficiency package to work involves two steps: 
+
+### 1. Installing Julia Language
+Just head over to the Julia language [download page](https://www.julialang.org/downloads/) and choose the suitable binary for your platform to download and install. 
+At the end of this step you should be able to run julia from your system. 
+
+!!! note
+    Head to [JuliaBox.com](https://www.juliabox.com) to run julia in your browser without any local installation.
+
+### 2. Installing Package
+GeoEfficiency is registered officially and so the latest stable release can be installed through the Julia package management system just by typing the following into the julia REPL prompt.
 
 ```julia
 julia> import Pkg
@@ -52,16 +63,22 @@ julia> Pkg.add("GeoEfficiency")
 ```
 
 ## Quick Usage
+After installing the package, you can load it to your current workspace by typing the following:
 ```julia
 julia> using GeoEfficiency
+```
+
+Now the package is available to use, try typing:
+```julia
 julia> calc()
 ```
+
 **see also: [`geoEff()`](@ref), [`calcN()`](@ref), [`batch()`](@ref)**
 
 ## Unit Test
 For scientific calculation accuracy in calculation and being error free is a highly demanded objective.
 Thus, the package is extensively tested method-wise in each supported operating system.
-Operating system fully supported include Windows, Linus, Apple OSx.
+Operating system fully supported include Windows, Linus, Apple OSX.
 
 After installing the package can be tested in your own system by typing the following into the REPL prompt.
 ```julia

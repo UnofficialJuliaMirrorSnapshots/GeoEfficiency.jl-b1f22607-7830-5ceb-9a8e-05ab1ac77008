@@ -1,9 +1,15 @@
 site_name:        GeoEfficiency.jl
 repo_url:         https://github.com/DrKrar/ GeoEfficiency.jl
-site_description: Description...
+edit_uri: ""
+site_description: Acurate geometrical efficiency calculator
 site_author:      Mohamed E. Krar
+remote_branch: gh-pages-MkDocs
 
-theme: readthedocs
+theme: 
+    name: readthedocs   #mkdocs
+    highlightjs: true
+    hljs_languages:
+        - Julia
 
 extra_css:
   - assets/Documenter.css
@@ -16,9 +22,25 @@ markdown_extensions:
   - extra
   - tables
   - fenced_code
-  - mdx_math
-
-docs_dir: 'build'
+  - admonition
+  - def_list
+  - toc:
+        permalink: True
+  #- mdx_math
+docs_dir: 'MarkDown'
 
 pages:
-  - Home: index.md
+  - Home: Guid.md
+  - Mauual: 
+    - About: manual/GeoEfficiency.md
+    - Physics Model: manual/Physics_Model.md
+    - Calculations: manual/Calculations.md
+    - Output Interface: manual/Output_Interface.md
+    - Input Batch: manual/Input_Batch.md
+  - Development: manual/Development.md
+  - Index: list.md
+
+plugins:
+  - search
+
+copyright: Copyright &copy; 2019
