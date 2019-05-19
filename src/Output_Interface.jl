@@ -22,9 +22,9 @@ const redirect  		= joinpath(resultdir, "GeoEfficiency.txt")
 Global variable that give a hint to the program on maxumam number of entries per detector displayed 
 on the `console` in btach mode.
 
-!!! note
+!!! note "Special Values"
 	Negative value will display prevent batch results from printed to the `console`. 
-	while `Inf` will print all  batch results to the `console`.
+	while `Inf` will print all batch results to the `console`.
 """
 global _max_batch 		= max_display	# max number of entries per detector displayed.   	
 global countDetectors 	= 1				# number of detectors
@@ -61,7 +61,7 @@ set the value of `_max_batch` which give a hint to the program on maximum number
 detector displayed on the `console` in batch mode.
 This function ```do not``` affect the saving of the batch calculation. 
 
-!!! note
+!!! note "Special Values"
 	Negative value will display prevent batch results from printed to the `console`. 
 	while `Inf` will print all  batch results to the `console`.
 
@@ -139,7 +139,7 @@ function calcN(detector::Detector = Detector())
          			calc(detector)
 
       		catch err
-         			print("\n\t"); @warn("some error had happened\n"); calc()
+         			print("\n\t"); @warn("some error had happened\n", _file=nothing); calc()
       		end #try
 
       		res = input("""\n
@@ -149,13 +149,13 @@ function calcN(detector::Detector = Detector())
     	II- To quit just press return\n
 			\n\tyour Choice: """, :red) |> lowercase;
       		if res == "n"
-         			print("\n\t"); @info("Please provide new detector dimention\n"); detector = Detector()
+         			print("\n\t"); @info("Please provide new detector dimention\n", _file=nothing); detector = Detector()
 
       		elseif res == "d"
-         			print("\n\t"); @info("using $detector \n");  continue
+         			print("\n\t"); @info("using $detector \n", _file=nothing);  continue
 
       		else
-         			print("\n\t"); @info("The 'calcN' had terminated, Thank you\n"); break
+         			print("\n\t"); @info("The 'calcN' had terminated, Thank you\n", _file=nothing); break
 
       		end #if
 
@@ -309,7 +309,7 @@ function batch(detectors_array::Vector{<: Detector},
    	end #if
    	close(redirect_file)
 
-   	print("\n\t"); @info("The program terminated, Thank you >>>>\n")
+   	print("\n\t"); @info("The program terminated, Thank you >>>>\n", _file=nothing)
    	return outpaths
 
 end #function
@@ -403,13 +403,13 @@ function _batch(::Val{true},
 
    	end #for_Height
    	results::Matrix{Float64} = reshape(out_results, 3, :) |> transpose
-   	@info("Saving <$countDetectors> to '$(id(detector)).csv'......\n")
+   	@info("Saving <$countDetectors> to '$(id(detector)).csv'......\n", _file=nothing)
    	path::String = joinpath(resultdir_pnt,  "$(id(detector)).csv")
    	try
       		writecsv_head(path, results, ["Height" "Rho" "GeoEfficiency"])
 
    	catch err
-      		@error("'$(id(detector)).csv': can't be created,\n trying to save results in an alternative file")
+      		@error("'$(id(detector)).csv': can't be created,\n trying to save results in an alternative file", _file=nothing)
       		checkResultsDirs() # to make sure the directories do exist
       		path = joinpath(resultdir_pnt,  "_$(id(detector)).csv")
       		rm(path, force = true)	#delete the fallback file if it is already exist
@@ -497,7 +497,7 @@ function _batch(::Val{false},
       		writecsv_head(path, results, ["AnchorHeight" "AnchorRho" "srcRadius" "srcLength" "GeoEfficiency"])
 
    	catch err
-      		@error("'$(id(detector)).csv': can't be created,\n trying to save results in an alternative file")
+      		@error("'$(id(detector)).csv': can't be created,\n trying to save results in an alternative file", _file=nothing)
       		checkResultsDirs() # to make sue that the directories do exist
       		path = joinpath(resultdir_nonPnt, "_$(id(detector)).csv")
       		rm(path, force = true)	#delete the fallback file if it is already exist
@@ -514,7 +514,6 @@ end #function
 #------------------- batchInfo -----------------
 
 """
-
 
 
 The function `batch()` can be called with or without arrangement(s). 
