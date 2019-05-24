@@ -11,7 +11,7 @@ Documentation |  [GitHub.io](https://GeoEfficiency.GitHub.io/dev/index.html)
 Current version | [v"0.9.4-dev"](https://github.com/DrKrar/GeoEfficiency.jl)
 First Created | Fri Aug 14 20:12:01 2015
 
-!!! note
+!!! note "Portable Document Format"
     This documentation is also available in [PDF](https://GeoEfficiency.GitHub.io/dev/GeoEfficiency.jl.pdf) format.
 
 ## Current/Planed Features
@@ -51,8 +51,8 @@ Getting the GeoEfficiency package to work involves two steps:
 Just head over to the Julia language [download page](https://www.julialang.org/downloads/) and choose the suitable binary for your platform to download and install. 
 At the end of this step you should be able to run julia from your system. 
 
-!!! note
-    Head to [JuliaBox.com](https://www.juliabox.com) to run julia in your browser without any local installation.
+!!! note "JuliaBox.com"
+    Head to [JuliaBox.com](https://www.juliabox.com) to run julia in your browser without any local installation. no registration is required just a Google account.
 
 ### 2. Installing Package
 GeoEfficiency is registered officially and so the latest stable release can be installed through the Julia package management system just by typing the following into the julia REPL prompt.
